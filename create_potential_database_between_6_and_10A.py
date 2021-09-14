@@ -79,7 +79,9 @@ def get_data(file_name):
         frame[i,1] = np.single(temp_dict[1])      # Insert x coordinate
         frame[i,2] = np.single(temp_dict[2])         # Insert y coordinate
         frame[i,3] = np.single(temp_dict[3])       # Insert z coordinate
-        diff_energy = internal_energy_0K - ind_energy
+    
+    
+    diff_energy = internal_energy_0K - ind_energy
 
     return no_atoms,internal_energy_0K,frame,id_number,ind_energy,diff_energy
 
