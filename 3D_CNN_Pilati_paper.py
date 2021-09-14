@@ -48,7 +48,8 @@ input_shape = (length,length,length,1)                      # Define input shape
 no_of_epochs = int(2000)                                       # Set the number of trianing epochs
 
  
-optimizer = keras.optimizers.Adam(learning_rate=0.01,beta_1=0.9,beta_2=0.999,epsilon=1e-07,amsgrad=False)
+optimizer = tf.keras.optimizers.Nadam(learning_rate=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-07, name="Nadam", **kwargs)
+
 
 callback = tf.keras.callbacks.EarlyStopping(
     monitor='loss', min_delta=0.02, patience=15, verbose=0, mode='auto',
@@ -85,7 +86,7 @@ cnn.add(Dense(units=20 , activation = 'elu'))
 #cnn.add(Dense(units=10 , activation = 'elu'))
 
 cnn.add(Dense(units=1))
-cnn.compile(loss='mean_squared_error', optimizer='Nadam', metrics=['mae'])
+cnn.compile(loss='mean_squared_error', optimizer=optimizer, metrics=['mae'])
 cnn.summary()
 
 #%%
